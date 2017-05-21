@@ -3,8 +3,8 @@ __license__ = "MIT"
 __version__ = "0.1.2"
 __email__ = "cjengdahl@gmail.com"
 
-from enigma import enigma_machine
-from enigma import enigma_exception
+from .enigma import enigma_machine
+from .enigma import enigma_exception
 import configparser
 import click
 import os
@@ -66,7 +66,7 @@ def list(configuration):
         sorted_config = []
 
         # convert dict to list
-        for key, value in selected.items():
+        for key, value in list(selected.items()):
             sorted_config.append([key, value])
 
         # sort
@@ -127,7 +127,7 @@ def pref(spaces, group, remember, space_detect, select, newlines, progress):
         preferences = []
 
         # convert dict to list
-        for key, value in selected.items():
+        for key, value in list(selected.items()):
             preferences.append([key, value])
 
         # sort
@@ -581,7 +581,7 @@ def update_config(local_config, changes):
     :return (dict): loaded configuration with new changes from invoked cli options
     """
 
-    for key, value in changes.items():
+    for key, value in list(changes.items()):
         if value is not None:
             if key == 'fast':
                 rotor = [int(x) for x in value.split(",")]
@@ -651,7 +651,7 @@ def write_config(config_name, local_config):
     sorted_config = []
 
     # convert dict to list
-    for key, value in local_config.items():
+    for key, value in list(local_config.items()):
         sorted_config.append([key, value])
 
     # sort

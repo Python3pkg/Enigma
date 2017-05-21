@@ -28,7 +28,7 @@ class Reflect:
         try:
             self.__wiring = list(Reflect.config.get('Reflectors', reflectId))
         except configparser.NoOptionError:
-            print(reflectId + " is not a valid reflector ID.")
+            print((reflectId + " is not a valid reflector ID."))
         self.__reflectId = reflectId
         return
 
